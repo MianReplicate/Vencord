@@ -32,7 +32,7 @@ import definePlugin from "@utils/types";
 import { chooseFile } from "@utils/web";
 import { CloudUpload as TCloudUpload } from "@vencord/discord-types";
 import { CloudUploadPlatform } from "@vencord/discord-types/enums";
-import { findByPropsLazy, findLazy, findStoreLazy } from "@webpack";
+import { findCssClassesLazy, findLazy, findStoreLazy } from "@webpack";
 import { Button, Constants, FluxDispatcher, Forms, lodash, Menu, MessageActions, PermissionsBits, PermissionStore, RestAPI, SelectedChannelStore, showToast, SnowflakeUtils, Toasts, useEffect, useState } from "@webpack/common";
 import { ComponentType } from "react";
 
@@ -43,7 +43,7 @@ import { VoiceRecorderWeb } from "./WebRecorder";
 
 const CloudUpload: typeof TCloudUpload = findLazy(m => m.prototype?.trackUploadFinished);
 const PendingReplyStore = findStoreLazy("PendingReplyStore");
-const OptionClasses = findByPropsLazy("optionName", "optionIcon", "optionLabel");
+const OptionClasses = findCssClassesLazy("optionName", "optionIcon", "optionLabel");
 
 export const cl = classNameFactory("vc-vmsg-");
 export type VoiceRecorder = ComponentType<{
@@ -62,7 +62,7 @@ const ctxMenuPatch: NavContextMenuPatchCallback = (children, props) => {
             label={
                 <div className={OptionClasses.optionLabel}>
                     <Microphone className={OptionClasses.optionIcon} height={24} width={24} />
-                    <div className={OptionClasses.optionName}>Send voice message</div>
+                    <div className={OptionClasses.optionName}>Send Voice Message</div>
                 </div>
             }
             action={() => openModal(modalProps => <Modal modalProps={modalProps} />)}
